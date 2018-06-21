@@ -1,0 +1,41 @@
+{
+  "extends": [
+    "tslint:latest",
+    "tslint-react"
+  ],
+  "rules": {
+    "interface-name": ["never-prefix"],
+    "typedef": [
+      true,
+      "call-signature",
+      "parameter",
+      "member-variable-declaration",
+      "property-declaration",
+      "variable-declaration"
+    ],
+    "ordered-imports": false,
+    "max-line-length": [
+      false
+    ],
+    "space-before-function-paren": false,
+    "arrow-parens": false,
+    "object-literal-sort-keys": false,
+    "member-ordering": false,
+    "no-conditional-assignment": false,
+    "jsx-no-multiline-js": false,
+    "no-console": false,
+    "no-shadowed-variable": false,
+    "no-submodule-imports": false,
+    "prefer-for-of": false,
+    "no-unused-expression": [
+      "allow-fast-null-checks"
+    ],
+    "no-empty-interface": false,
+    "no-implicit-dependencies": false,
+    "trailing-comma": [
+      false
+    ],
+    "member-access": false,
+    "radix": false
+  }
+}

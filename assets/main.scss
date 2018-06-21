@@ -1,0 +1,117 @@
+@import "mixins";
+*{
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body{
+  width: 100%;
+  height: 100vh;
+}
+
+#app{
+  width: 100%;
+  height: 100%;
+}
+
+
+.container{
+  @include DisplayFlex;
+  justify-content: center;
+  align-items:center;
+  width: 100%;
+  height: 100%;
+}
+
+.content{
+  max-width: 900px;
+  width: 100%;
+  height: 80%;
+  @include DisplayFlex;
+  flex-direction: column;
+  box-shadow: 0 0 5px #000000;
+}
+
+.header-content{
+  width: 100%;
+  height: 80px;
+  background: #524747;
+  font-size: 30px;
+  color:#fff;
+  @include DisplayFlex;
+  align-items:center;
+  justify-content:center;
+  font-weight: bold;
+}
+
+.heading-row{
+  width: 100%;
+  height:60px;
+  color:#000000;
+  @include DisplayFlex;
+  border-bottom: 1px solid #000000;
+  font-size: 25px;
+  div{
+    flex:1;
+    @include DisplayFlex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    &:first-child{
+      border-right:1px solid #000000;
+    }
+  }
+}
+
+.content-row{
+  @include DisplayFlex;
+  flex-direction: row;
+  width: 100%;
+  flex: 1;
+  >.item-list-wrapper{
+    @include DisplayFlex;
+    padding: 15px 0 15px 35px;
+    width: 50%;
+    flex: 1;
+    &:first-child{
+      border-right: 1px solid #000000;
+    }
+  }
+}
+
+.item-scroll-section{
+  flex: 1;
+  overflow: hidden;
+  overflow-y: auto;
+  counter-reset: section;
+  > .row-item{
+    width: 100%;
+    height: 45px;
+    @include DisplayFlex;
+    align-items:center;
+    >input{
+      height: 60%;
+      width: 80%;
+      padding: 0 6px;
+      border: none;
+      font-size: 20px;
+    }
+    >p{
+      height: 60%;
+      width: 80%;
+      padding: 0 6px;
+      @include DisplayFlex;
+      align-items:center;
+      font-size: 20px;
+    }
+  }
+  > .row-item::before{
+    font-weight: bold;
+    font-size: 20px;
+    counter-increment: section;
+    content: "" counter(section) ".";
+  }
+}
