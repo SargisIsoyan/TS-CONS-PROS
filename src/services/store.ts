@@ -1,16 +1,13 @@
 import {compose, createStore} from "redux";
-import selector from "services/selector";
 import reducer from "services/reducer";
-import {Map} from "immutable";
+import {fromJS} from "immutable";
 
 let store: any;
 
-const initialState: any = Map();
+const initialState: any = fromJS({consData: {}, prosData: {}});
 
 if (process && process.env.NODE_ENV !== "production") {
-    const composeEnhancers: any = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ? (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-        stateSanitizer: state => selector(state, true)
-    }) : compose;
+    const composeEnhancers: any = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ? (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : compose;
     store = createStore(reducer, initialState, composeEnhancers());
 } else {
     store = createStore(reducer, initialState);

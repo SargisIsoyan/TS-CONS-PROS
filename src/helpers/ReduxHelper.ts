@@ -1,7 +1,5 @@
-import {createSelectorCreator, defaultMemoize} from "reselect";
 import selector, {ISelectorVariables} from "services/selector";
 import {bindActionCreators} from "redux";
-import {is} from "immutable";
 
 export function mapStateToProps(selectorVariables: ISelectorVariables): any {
     return state => selector(state, selectorVariables);
@@ -40,8 +38,6 @@ export function getProps(variables: any, selectors: any, state: any): any {
 
     return props;
 }
-
-export const createSelector: any = createSelectorCreator(defaultMemoize, is);
 
 export function getAllProps(selectors: any, state: any): any {
     const keys: string[] = Object.keys(selectors);

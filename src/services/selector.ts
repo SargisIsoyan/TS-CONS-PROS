@@ -1,5 +1,5 @@
-import {consSelector, IConsModuleProps, IConsSelectorVariables} from "modules/cons/consSelector";
-import {IProsModuleProps, IProsSelectorVariables, prosSelector} from "modules/pros/prosSelector";
+import consSelector, {IConsModuleProps, IConsSelectorVariables} from "modules/cons/consSelector";
+import prosSelector, {IProsModuleProps, IProsSelectorVariables} from "modules/pros/prosSelector";
 import {getAllProps, getProps} from "helpers/ReduxHelper";
 
 export interface IStoreProps extends IConsModuleProps, IProsModuleProps {

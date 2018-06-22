@@ -14,12 +14,13 @@ export const PROS_REDUCER_ACTION_TYPES: IProsReducerActionTypes = {
 };
 
 export interface IPros extends Map<string, string> {
+    index: number;
     text: string;
     id: string;
 }
 
 interface IProsData extends Map<string, any> {
-    pros: Map<string, IPros>
+    pros: Map<string, any>
 }
 
 const initialState: IProsData = fromJS({
@@ -30,10 +31,10 @@ export default (state = initialState, {type, payload}: IProsActions) => {
     switch (type) {
         case PROS_REDUCER_ACTION_TYPES.ADD:
         case PROS_REDUCER_ACTION_TYPES.EDIT:
-            return state.set(payload.pros.get("id"), payload.pros);
+            return state.setIn(["pros", payload.pros.get("id")], Map(payload.pros));
 
         case PROS_REDUCER_ACTION_TYPES.REMOVE:
-            return state.delete(payload.id);
+            return state.deleteIn(["pros", payload.id]);
 
         default:
             return state;

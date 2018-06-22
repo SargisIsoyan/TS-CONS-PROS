@@ -1,15 +1,15 @@
-import {ISelectorVariables} from "services/selector";
 import {mapDispatchToProps, mapStateToProps} from "helpers/ReduxHelper";
+import {addCons, editCons, removeCons} from "modules/cons/consAction";
+import {addPros, editPros, removePros} from "modules/pros/prosAction";
+import {ISelectorVariables} from "services/selector";
 import {ICons} from "modules/cons/consReducer";
 import {IPros} from "modules/pros/prosReducer";
 import ItemList from "components/ItemList";
 import Header from "components/Header";
 import {connect} from "react-redux";
 import "../../assets/main.scss";
-import {List, Map} from "immutable";
 import * as React from "react";
-import {addCons, editCons, removeCons} from "modules/cons/consAction";
-import {addPros, editPros, removePros} from "modules/pros/prosAction";
+import {List} from "immutable";
 
 interface IAppProps {
     removePros: (id: string) => void;
@@ -18,14 +18,14 @@ interface IAppProps {
     editCons: (cons: ICons) => void;
     addCons: (cons: ICons) => void;
     addPros: (pros: IPros) => void;
-    pros: any;
-    cons: any;
+    consArray: List<any>;
+    prosArray: List<any>;
 }
 
 class App extends React.Component<IAppProps> {
     render(): JSX.Element {
-        const {cons, pros} = this.props;
-        console.log(cons);
+        const {consArray, prosArray, removePros, addCons, addPros, editCons, editPros, removeCons} = this.props;
+
         return (
             <div className="container">
                 <div className="content">
@@ -37,16 +37,16 @@ class App extends React.Component<IAppProps> {
                     <div className="content-row">
                         <ItemList
                             remove={removePros}
+                            data={prosArray}
                             edit={editPros}
                             add={addPros}
-                            data={pros}
                             key="pros"
                         />
                         <ItemList
                             remove={removeCons}
+                            data={consArray}
                             edit={editCons}
                             add={addCons}
-                            data={cons}
                             key="cons"
                         />
                     </div>
@@ -58,10 +58,10 @@ class App extends React.Component<IAppProps> {
 
 const selectorVariables: ISelectorVariables = {
     cons: {
-        cons: true
+        consArray: true
     },
     pros: {
-        pros: true
+        prosArray: true
     }
 };
 
